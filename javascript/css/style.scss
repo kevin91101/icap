@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(90deg, rgb(84, 130, 255), rgb(100, 255, 134));
+}
+
+header {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        color: white;
+        font-size: 3rem;
+    }
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input, button {
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.75rem;
+        margin: 0.1rem;
+    }
+
+    // 隱藏Y, M, D上下按鈕
+    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        width: 100px;
+        text-align: center;
+    }
+
+    button {
+        cursor: pointer;
+        background-color: rgb(0, 146, 114);
+        color: white;
+    }
+}

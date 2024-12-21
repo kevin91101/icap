@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Todo list</h1>
+    </header>
+    <main>
+        <form>
+            <input type="text">
+            <input type="number" min="1990" max="3030" placeholder="Y" required>
+            <input type="number" min="1" max="12" placeholder="M" required>
+            <input type="number" min="1" max="31" placeholder="D" required>
+            <button type="submit">Add into list</button>
+        </form>
+        <div class="sort">
+            <button>依預定時間排序</button>
+        </div>
+        <section></section>
+    </main>
+    <script src="js/todo.js"></script>
+</body>
+</html>
