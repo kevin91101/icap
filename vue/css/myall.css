@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&family=Noto+Sans+TC:wght@100..900&family=Zen+Old+Mincho&display=swap');
+:root{
+            --mycolor01: #DBDBE5;
+            --mycolor02: #A5B7C1;
+            --mycolor03: #535D55;
+            --mycolor04: #514644;
+            --mycolor05: #ffffff;
+            --mycolor06: #472702;
+            --mycolor07: #67723b;
+            --mycolor08: #F0EAD6;
+            --mycolor09: #C0A080;
+            --mycolor10: #8C5A3E;
+            --mycolor11: #2a462c;
+            --mycolor12: #fd4511;
+            --mycolor13: #083054;
+            --mycolor14: #06c655;
+            --mycolor15: #072846;
+            --mycolor16: #072840;
+            --mycolor17: #041d33;
+            
+    }
+
+/* 自行定義背景色 */
+.bg-color01{background-color: var(--mycolor01);}
+.bg-color02{background-color: var(--mycolor02);}
+.bg-color03{background-color: var(--mycolor03);}
+.bg-color04{background-color: var(--mycolor04);}
+.bg-color05{background-color: var(--mycolor05);}
+.bg-color06{background-color: var(--mycolor06);}
+.bg-color07{background-color: var(--mycolor07);}
+.bg-color08{background-color: var(--mycolor08);}
+.bg-color09{background-color: var(--mycolor09);}
+.bg-color10{background-color: var(--mycolor10);}
+.bg-colorUL01{background-color: var(--mycolor12);}
+.ul-color01{color: var(--mycolor12);}
+.ul-color02{color: var(--mycolor13);}
+.ul-color02dark1{color: var(--mycolor15);}
+.ul-color02dark2{color: var(--mycolor16);}
+.ul-color02dark3{color: var(--mycolor17);}
+
+.fw-100{font-weight: 100;}
+.fw-200{font-weight: 200;}
+.fw-300{font-weight: 300;}
+.fw-400{font-weight: 400;}
+.fw-500{font-weight: 500;}
+.fw-600{font-weight: 600;}
+.fw-700{font-weight: 700;}
+.fw-800{font-weight: 800;}
+.fw-900{font-weight: 900;}
+
+.text-line{color: var(--mycolor14);}
+
+.image{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;/* 保持寬高比，並裁切多餘部分 */
+}
+
+.bg-cover{
+    background-position: center center;
+    background-size: cover;
+}
+
+.btn-outline-ul01{
+    --bs-btn-color: var(--mycolor12);
+    --bs-btn-border-color: var(--mycolor12);
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: var(--mycolor12);
+    --bs-btn-hover-border-color: var(--mycolor12);
+    --bs-btn-focus-shadow-rgb: 255, 193, 7;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: var(--mycolor12);
+    --bs-btn-active-border-color: var(--mycolor12);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--mycolor12);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--mycolor12);
+    --bs-gradient: none
+}
+
+.btn-ul02{
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--mycolor13);
+    --bs-btn-border-color: var(--mycolor13);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--mycolor15);
+    --bs-btn-hover-border-color: var(--mycolor16);
+    --bs-btn-focus-shadow-rgb: 60, 153, 110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--mycolor16);
+    --bs-btn-active-border-color: var(--mycolor17);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--mycolor13);
+    --bs-btn-disabled-border-color: var(--mycolor13);    
+}
+
+/* h1,h2,h3,h4,h5,p,.h1,.h2,.h3,.h4,.h5{
+    color: white;
+} */
+
+a{
+    text-decoration: none;
+}
+
+.wrap{
+    width: 900px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.item{
+    width: 270px;
+    margin: 15px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    transform: translateY(0px);
+    transition: .25s;
+}
+
+.item img{
+    width: 100%;
+    vertical-align: middle;
+}
+.item .txt{
+    padding: 20px;
+    position: relative;
+}
+.item h2{
+    color: black;
+    border-bottom: 1px solid #888;
+    padding-bottom: .3em;
+    margin-bottom: .4em;
+    font-weight: 900;
+    transition: .25s;
+}
+
+.items p{
+    line-height: 1.5;
+    font-weight: 300;
+    transition: .25s;
+}
+
+
+.item .txt:before{
+    content:"";
+    position:absolute;
+    width:0;
+    height:0;
+    left:0;
+    top:0;
+    border-top: 40px solid transparent;
+    border-left: 135px solid #fff;
+    border-right: 135px solid #fff;
+    transform: translateY(-100%);
+    transition: .25s;
+}
+
+.item:hover{
+    transform: translateY(-50px);
+    background-color: var(--mycolor12);
+}
+.item:hover .txt{
+    background-image: linear-gradient(0deg, var(--mycolor13),var(--mycolor12));
+}
+
+.item:hover .txt:before{
+    border-left:135px solid var(--mycolor12);
+    border-right:134px solid var(--mycolor12);
+}
+.item:hover h2{
+    color:#fff;
+    border-bottom-color: #fff;
+}
+.item:hover p{
+    color:#fff;
+}
+
+.goTop {
+    position: fixed;
+    right: 24px;
+    bottom: 20px;
+    z-index: 600;
+    transform: translateX(0%);
+    transition: transform 0.2s;
+}
+.goTop .goTopBtn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.goTop .goTopBtn .fa-circle-chevron-up {
+    color: white;
+}
+.goTop .goTopBtn .fa-circle-chevron-up ::before {
+    content: "\f35b";
+}
+
+.goTop.hide {
+    transform: translateX(200%);
+}

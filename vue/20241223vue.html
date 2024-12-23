@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>kevin</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+<body>
+    <div class="container py-5" id="app">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h1 class="text-center">註冊帳號</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">帳號:</label>
+                            <input type="text" class="form-control" placeholder="輸入5-10個英文" v-model="username" :class="{ 'is-invalid' : !flag_username , 'is-valid' : flag_username }">
+                            <div class="valid-feedback">帳號符合規則</div>
+                            <div class="invalid-feedback">帳號不符合規則</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">密碼:</label>
+                            <input type="password" class="form-control" placeholder="輸入8-12個英文或數字" v-model="userpasswd" :class="{ 'is-invalid' : !flag_userpasswd , 'is-valid' : flag_userpasswd }">
+                            <div class="valid-feedback">密碼符合規則</div>
+                            <div class="invalid-feedback">密碼不符合規則</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="from-label">確認密碼:</label>
+                            <input type="text" class="form-control" v-model="checkpasswd" :class="{ 'is-invalid' : !flag_checkpasswd , 'is-valid' : flag_checkpasswd }">
+                            <div class="valid-feedback">密碼相同</div>
+                            <div class="invalid-feedback">密碼不相同</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Email:</label>
+                            <input type="email" class="form-control" v-model="email">
+                        </div>
+                        <div class="mb-3 text-center">
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" value="閱讀" v-model="interest">
+                                <label for="" class="form-check-label">閱讀</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" value="打球" v-model="interest">
+                                <label for="" class="form-check-label">打球</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" value="電影" v-model="interest">
+                                <label for="" class="form-check-label">電影</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" value="爬山" v-model="interest">
+                                <label for="" class="form-check-label">爬山</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" value="逛街" v-model="interest">
+                                <label for="" class="form-check-label">逛街</label>
+                            </div>
+                        </div>
+                        <div class="text-center d-flex justify-content-around">
+                            <button class="btn btn-success" @click="register()">註冊</button>
+                            <button class="btn btn-warning">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        const App = {
+            data() {
+                return {
+                    username: '',
+                    userpasswd: '',
+                    checkpasswd: '',
+                    email: '',
+                    interest: [],
+                    flag_username: false,
+                    flag_userpasswd: false,
+                    flag_checkpasswd: false,
+                }
+            },
+            watch: {
+                username: function(newValue) {
+                    const vm = this;
+                    // console.log(newValue.length);
+                    if(newValue.length > 4 && newValue.length < 11) {
+                        vm.flag_username = true;
+                    }else {
+                        vm.flag_username = false;
+                    }
+                },
+                userpasswd: function(pwValue) {
+                    const vm = this;
+                    // console.log(pwValue.length)
+                    if(pwValue.length > 7 && pwValue.length < 13) {
+                        vm.flag_userpasswd = true;
+                            if(vm.checkpasswd == vm.userpasswd) {
+                                vm.flag_checkpasswd = true;
+                            }else {
+                                vm.flag_checkpasswd = false;
+                            }                        
+                    }else {
+                        vm.flag_userpasswd = false;
+                        vm.flag_checkpasswd = false;
+                    }
+                },
+                checkpasswd: function(chkValue) {
+                    const vm = this;
+                    // console.log(this.userpasswd);
+                    if(vm.flag_userpasswd) {
+                        if(vm.checkpasswd == vm.userpasswd) {
+                            vm.flag_checkpasswd = true;
+                        }else {
+                            vm.flag_checkpasswd = false;
+                        }
+                    }else {
+                        vm.flag_checkpasswd = false;
+                    }
+                }
+            },
+            methods: {
+                register() {
+                    const vm = this;
+                    if(vm.flag_username && vm.flag_userpasswd && vm.flag_checkpasswd) {
+                        if(confirm("確認註冊?")) {
+                            //傳遞至後端api
+                            //input: {"username" : "xxx", "password" : "xxx", "email" : "xxx", "interest" : "xxx"}
+                            var dataJSON = {};
+                            dataJSON["username"] = vm.username;
+                            dataJSON["password"] = vm.userpasswd;
+                            dataJSON["email"] = vm.email;
+                            dataJSON["interest"] = vm.interest.join(', ');
+                            console.log(JSON.stringify(dataJSON));
+
+                            $.ajax({
+                                type: "POST",
+                                url: "http://localhost:8080/icap/icap/vue/20241223signup.php",
+                                data: JSON.stringify(dataJSON),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function(data) {
+                                    console.log(data);
+                                    alert(data.message);
+                                    location.href = "20241223vue.html";
+                                },
+                                error: function() {
+                                    alert("error- http://localhost:8080/icap/icap/vue/20241223signup.php")
+                                }
+                            });
+                        }
+                    }else {
+                        alert("資料有錯誤!");
+                    }
+                }
+            }
+        }
+        Vue.createApp(App).mount("#app");
+    </script>
+</body>
+</html>

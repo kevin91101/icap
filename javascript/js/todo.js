@@ -142,10 +142,10 @@ function mergeTime(arr1, arr2) {
     let result = [];
     let i = 0;
     let j = 0;
-    while(i < arr1.length && j < arr2.length) {
-        if(Number(arr1[i].todoYear) > Number(arr2[j].todoYear)) {
-            result.push(arr2[j]);
-            j++;
-        }else if(Number(arr1[i]))
-    }
+    // while(i < arr1.length && j < arr2.length) {
+    //     if(Number(arr1[i].todoYear) > Number(arr2[j].todoYear)) {
+    //         result.push(arr2[j]);
+    //         j++;
+    //     }else if(Number(arr1[i]))
+    // }
 }
